@@ -1,0 +1,236 @@
+1. Convert Temperature from Celsius to Fahrenheit
+#include <stdio.h>
+int main()
+ {
+    float c,f;
+    printf("Enter temperature in Celsius: ");
+    scanf("%f",&c);
+    f= (c * (9 / 5)) + 32;
+    printf("Temperature in Fahrenheit = %.2f\n", f);
+    return 0;
+}
+
+
+2. Find Quotient and Remainder of Two Integers
+#include <stdio.h>
+int main() 
+{
+    int dividend, divisor, q, r;
+    printf("Enter dividend and divisor: ");
+    scanf("%d %d", &dividend, &divisor);
+    q= dividend / divisor;
+    r= dividend % divisor;
+    printf("Quotient = %d\n", q);
+    printf("Remainder = %d\n", r);
+    return 0;
+}
+
+
+3. Convert Days into Months and Days
+#include <stdio.h>
+int main()
+ {
+    int n, months,Days;
+    printf("Enter number of days: ");
+    scanf("%d", &n);
+    months = n / 30;
+    Days = n % 30;
+    printf("%d days = %d month(s) and %d day(s)\n", n, months,Days);
+    return 0;
+}
+
+
+
+4. Find the Largest and Smallest of Two Numbers
+#include <stdio.h>
+int main() {
+    int a, b;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    if (a > b) 
+	{
+	printf("%d is the largest\n", a);
+    printf("%d is the smallest\n", b);
+    } 
+	else if (a < b) 
+	{
+    printf("%d is the largest\n", b);
+    printf("%d is the smallest\n", a);
+    } 
+	else {
+    printf("Both numbers are equal\n");
+    }
+    return 0;
+}
+
+
+
+5.Check Even or Odd Number
+#include <stdio.h>
+int main()
+ {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d",&n);
+    if (n% 2 == 0)
+	{
+    printf("%d is Even\n", n);
+    }
+	else 
+	{
+    printf("%d is Odd\n", n);
+    }
+    return 0;
+}
+
+
+
+6. Check Whether a Number is Even or Odd
+#include <stdio.h>
+int main()
+ {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d",&n);
+    if (n% 2 == 0)
+	{
+    printf("%d is Even\n", n);
+    }
+	else 
+	{
+    printf("%d is Odd\n", n);
+    }
+    return 0;
+}
+7.Are u eligible for voting
+#include <stdio.h>
+int main() 
+{
+    int age;
+    printf("Enter your age: ");
+    scanf("%d", &age);
+    if (age >= 18) {
+    printf("You are eligible to vote.\n");
+    } else {
+    printf("You are not eligible to vote.\n");
+    }
+    return 0;
+}
+
+
+
+9. Example of a Switch Statement
+#include <stdio.h>
+int main() 
+{
+    int a;
+    printf("Enter a number (1-3): ");
+    scanf("%d",&a);
+    if (a==1){
+	printf("You chose One\n");}
+    else if (a==2)
+    {
+    printf("You chose Two\n");
+    }
+    else if (a==3)
+    {
+	printf("You chose Three\n");
+    }
+    else{
+    printf("Invalid choice\n");
+    }
+    return 0;
+}
+
+
+
+10. Check Whether a Character is a Vowel or Consonant
+#include <stdio.h>
+int main() {
+    char ch;
+    printf("Enter a character: ");
+    scanf("%c", &ch);
+    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
+    ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') {
+    printf("%c is a Vowel\n", ch);
+    } else {
+    printf("%c is a Consonant\n", ch);
+    }
+    return 0;
+}
+
+
+
+11. Assign Grades Based on Marks
+#include <stdio.h>
+int main()
+{
+int marks;
+printf("Enter marks: ");
+scanf("%d", &marks);
+if (marks >= 90) {
+    printf("Grade: A\n");
+    } 
+	else if (marks >= 75) {
+    printf("Grade: B\n");
+    } 
+	else if (marks >= 50) {
+    printf("Grade: C\n");
+    } 
+	else {
+    printf("Grade: Fail\n");
+    }
+    return 0;
+}
+
+
+12. Check Whether a Number is Divisible by 5 and 11
+#include <stdio.h>
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    if (n % 5 == 0 && n % 11 == 0) {
+    printf("%d is divisible by both 5 and 11\n", n);
+    } else {
+    printf("%d is not divisible by both 5 and 11\n", n);
+    }
+    return 0;
+}
+
+13.Find the Absolute Value of a Number
+#include <stdio.h>
+int main() 
+{
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    if (n< 0) {
+    n = -n;
+    }
+    printf("Absolute value = %d\n",n);
+    return 0;
+}
+
+14. Find the Largest Among Three Numbers
+#include <stdio.h>
+int main() 
+{
+    int a, b, c;
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &a, &b, &c);
+
+    if (a >= b && a >= c) {
+    printf("%d is the largest\n", a);
+    } else if (b >= a && b >= c) {
+    printf("%d is the largest\n", b); 
+    } else {
+    printf("%d is the largest\n", c);
+    }
+    return 0;
+}
+
+
+
+
+
