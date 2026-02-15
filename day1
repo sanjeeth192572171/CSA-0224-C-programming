@@ -1,0 +1,162 @@
+Q1. Display words
+#include <stdio.h>
+int main()
+ {
+    printf("Hello, World!");
+    return 0;
+}
+
+
+
+Q2.. Add two integers
+#include <iostream>
+int main()
+	{
+		printf("enter any 2 int");
+		int a,b,sum=0;
+		scanf("%d %d",&a,&b);
+		sum=a+b;
+		printf("sum of %d and %d is :%d /n",a,b,sum);
+		return 0;
+		
+	}
+
+
+
+Q3. Add two floating point number
+#include <stdio.h>
+int main()
+{
+	float a,b,sum;
+	printf("enter the values:");
+	scanf("%f%f",&a,&b);
+	sum=a+b;
+	printf("sum=%f",sum);
+	return 0;
+	
+}
+Q4. Area of a Circle (with two decimal places)
+
+#include <stdio.h>
+int main()
+ {
+    float r,pi,area;
+    printf("Enter the radius of the circle: ");
+    scanf("%f",&r);
+    pi=3.14;
+    area = pi*r*r;
+    printf("Area of Circle = %.4f\n", area);
+    return 0;
+}
+
+
+
+Q5.Area of a Triangle
+
+#include <stdio.h>
+int main()
+ {
+    float b, h, area;
+    printf("Enter base and height of the triangle: ");
+    scanf("%f %f", &b, &h);
+    area = 0.5 * b* h;
+    printf("Area of Triangle = %f", area);
+    return 0;
+}
+
+
+Q6. Area and Perimeter of a Rectangle
+#include <stdio.h>
+int main()
+ {
+    float l, w, area, p;
+    printf("Enter length and width of the rectangle: ");
+    scanf("%f %f", &l, &w);
+    area = l * w;
+    p = 2 * (l + w);
+    printf("Area = %f\n", area);
+    printf("Perimeter = %f\n", p);
+    return 0;
+}
+Q7. Square and Cube of a Number
+#include <stdio.h>
+int main()
+ {
+    int n, square, cube;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    square = n* n;
+    cube = n*n*n;
+    printf("Square = %d\n", square);
+    printf("Cube = %d\n", cube);
+    return 0;
+}
+
+
+Q8. Roots of a Quadratic Equation
+#include <stdio.h>
+#include <math.h>
+int main()
+ {
+    float a, b, c, root1, root2;
+
+    printf("Enter a, b, and c: ");
+    scanf("%f %f %f", &a, &b, &c);
+	root1 = (b + sqrt(b*b-4*a*c)) / (2*a);
+    root2 = (-b - sqrt(b*b-4*a*c)) / (2*a);
+    printf("Roots are %f and %f",root1,root2);
+    return 0;
+}
+
+
+Q9. Swap Two Numbers Using a 3 Variable
+#include <stdio.h>
+int main() 
+{
+    int a, b, t;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    printf("After swapping: a = %d, b = %d\n", a, b);
+    t = a;
+    a = b;
+    b = t;
+    printf("After swapping: a = %d, b = %d\n", a, b);
+    return 0;
+}
+Q10. Swap Two Numbers Using a 2 Variable
+#include <stdio.h>
+int main()
+ {
+    int a, b;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    printf("After swapping: a = %d, b = %d\n", a, b);
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    printf("After swapping: a = %d, b = %d\n", a, b);
+    return 0;
+}
+
+Q11 . Find the ASCII Value of a Character
+
+#include <stdio.h>
+int main()
+{
+    char ch;
+    printf("Enter a character: ");
+    scanf("%c", &ch);
+    printf("ASCII value is %d\n", ch);
+    return 0;
+}
+Q12. Compute Simple Interest
+#include <stdio.h>
+int main()
+ {
+    float p,r,t, si;
+    printf("Enter principal, rate of interest, and time: ");
+    scanf("%f %f %f",&p,&r,&t);
+    si = (p*r*t) / 100;
+    printf("Simple Interest = %.2f\n", si);
+    return 0;
+}
