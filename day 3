@@ -1,0 +1,276 @@
+Day 3
+1. Write a program to print numbers from 1
+to 100.
+#include <stdio.h>;
+int main()
+{
+	int i=1,n=100;
+	while (i<=n){
+	printf("%d\n",i);
+	i++;
+	}
+return 0;	
+}
+
+2. Write a program to print even numbers
+from 1 to 50.
+#include <stdio.h>
+int main() {
+    int i = 1, n = 50;
+    while (i <= n) {
+    if (i % 2 == 0) {
+    printf("%d\n", i);
+    }
+    i++;
+    }
+
+    return 0;
+}
+
+
+3. C program to print n natural numbers,
+
+#include <stdio.h>
+int main() {
+    int i, n;
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+    printf("The first %d natural numbers are:\n", n);
+    i = 1;
+    while (i <= n) {
+        printf("%d\n", i);
+        i++;
+    }
+    return 0;
+}
+
+4. To find sum of the n natural Numbers,
+#include <stdio.h>
+int main() {
+    int n, i, sum = 0;
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+    for (i = 1; i <= n; i++) {
+        sum += i;
+    }
+
+    printf("The sum of the first %d natural numbers is %d\n", n, sum);
+    return 0;
+}
+5. To find Factorial of a given number
+#include <stdio.h>
+int main() {
+    int n, i, fact=1;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    if (n < 0) {
+    printf("Factorial is not possible for negative numbers");
+    } else {
+    for (i = 1; i <= n; i++) {
+	fact = fact * i;
+    }
+    printf("Factorial of %d is %d", n, fact);
+    }
+    return 0;
+}
+
+6. To print Fibonacci series.
+#include <stdio.h>
+int main() {
+    int n, i, first, second, next;
+    first = 0;
+    second = 1;
+    printf("enter the no terms:");
+    scanf("%d", &n);
+    printf("Fibonacci Series is: ");
+    for (i = 1; i <= n; i++) {
+    printf("%d ", first);
+    next = first + second;  
+    first = second;         
+    second = next;           
+    }
+    return 0;
+}
+
+7. Reverse a given number
+#include <stdio.h>
+int main(){
+	int n,num,reverse,digit;
+	printf("enter a number:");
+	scanf("%d",&num);
+	n=num;
+	while(n!=0){
+	digit=n%10;
+	reverse=reverse*10+digit;
+	n=n/10;
+	}
+	printf("reversed number is %d",reverse);
+}
+
+
+
+8.Write a program to check whether a
+number is a palindrome.
+#include <stdio.h>
+int main(){
+int reverse=0,digit,i,n;
+printf("enter  a number:");
+scanf("%d",&i);
+n=i;
+while(n!=0){
+digit=n%10;
+reverse=reverse*10+digit;
+n=n/10;		
+}
+if(reverse==i){
+printf("%d is a palindrome",i);
+}
+else {
+printf("%d is not a palindrome",i);
+}
+return 0;
+}
+
+9. Write a program to print multiplication
+table of a number.
+
+
+#include <stdio.h>
+int main(){
+int i,n,mul,times;
+printf("enter the number :");
+scanf("%d",&n);
+printf("enter the number of time it should multiply:");
+scanf("%d",&times);
+for(i=1;i<=times;i++)
+{
+	mul=i*n;
+	printf("%d * %d = %d\n",i,n,mul);
+}
+return 0;
+}
+
+
+10. Write a program to check the Armstrong
+number.
+
+
+#include <stdio.h>
+int main(){
+int r=0,digit,i,n;
+printf("enter  a number:");
+scanf("%d",&i);
+n=i;
+while(n!=0){
+digit=n%10;
+r=r+digit*digit*digit;
+n=n/10;		
+}
+if(r1==i){
+printf("%d is a armstrong",i);
+}
+else {
+printf("%d is not a armstrong",i);
+}
+return 0;
+}
+
+11. Sum of the digits of a number
+#include <stdio.h>
+int main(){
+int sum=0,digit,i,n;
+printf("enter  a number:");
+scanf("%d",&i);
+n=i;
+while(n!=0){
+digit=n%10;
+sum+=digit;
+n=n/10;		
+}
+printf("%d is the sum of given no",sum);
+return 0;
+}
+
+
+
+
+
+12. Write a program to find the number of
+digits in a number
+#include <stdio.h>
+int main(){
+int sum=0,digit,i,n;
+printf("enter  a number:");
+scanf("%d",&i);
+n=i;
+while(n!=0){
+digit=n%10;
+sum++;
+n=n/10;		
+}
+printf("%d is the sum of given no",sum);
+return 0;
+}
+
+
+13. Write a program to calculate the average of a set of N numbers provided by the user. Sample Input: 20, 10, 30 Sample Output: 20
+#include <stdio.h> 
+int main(){
+int n, i; 
+float num, sum = 0, average; 
+printf("Enter how many numbers: "); 
+scanf("%d", &n); 
+for(i = 1; i <= n; i++){ 
+printf("Enter number %d: ", i); 
+scanf("%f", &num); 
+sum += num; }
+average = sum / n; 
+printf("Average = %.2f\n", average); 
+return 0; 
+}
+
+14. Accept the Height of a Person & Categorize as Taller, Dwarf & Average Problem Description This problem accepts the height of a person as input and categorizes as taller, dwarf & average.
+
+#include <stdio.h> 
+int main(){ 
+float h; 
+printf("Enter height in cm: "); 
+scanf("%f",&h); 
+
+if (h<150){
+printf ("Category: Dwarf\n"); }
+
+else if (h >= 150 && h <= 170) {
+printf ("Category: Average\n"); }
+
+else {
+printf ("Category: Taller\n");}
+
+return 0;
+}
+15. Write a program to compute the sum of the squares of the first N natural numbers. Sample Input: 4 Sample Output: 30
+#include <stdio.h> 
+int main(){ 
+int n,sum=0,i;
+printf("Enter the first n numbers: "); 
+scanf("%d", &n); 
+for(i = 1; i <= n; i++) { 
+sum += i * i; 
+} 
+printf("Sum of squares = %d\n", sum); 
+return 0; 
+}
+16. Write a program to find the sum of all multiples of a given number (X) up to a specified limit. Sample Input: X=3, Limit=10 Sample Output: 18
+#include <stdio.h> 
+int main(){ 
+int x,limit,i,sum=0; 
+printf("Enter an number: "); 
+scanf("%d",&x); 
+printf("Enter limit:"); 
+scanf("%d",&limit); 
+for(i = x; i <= limit; i += x) { 
+sum += i; 
+} 
+printf("Sum of multiples = %d\n", sum); 
+return 0; 
+}
