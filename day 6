@@ -1,0 +1,339 @@
+Day 6
+
+1.Write a C program to print square pattern
+#include <stdio.h>
+int main() {
+    int n, i, j;
+    printf("Enter the size of the square: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= n; j++) {
+            printf("* ");
+        }
+        printf("\n"); }
+    return 0;
+}
+2..Write a C program to print Hollow pattern
+#include <stdio.h>
+int main() {
+    int n, i, j;
+    printf("Enter the size of the square: ");
+    scanf("%d", &n);
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= n; j++) {
+            if (i == 1 || i == n || j == 1 || j == n)
+                printf("* ");
+            else
+                printf("  ");  
+        }
+        printf("\n");  
+    }
+    return 0;
+}
+
+3.Write a C program to print staircase of
+Stars
+
+#include <stdio.h>
+int main() {
+    int n, i, j;
+    printf("Enter the number of steps: ");
+    scanf("%d", &n);
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        printf("\n"); 
+    }
+    return 0;
+}
+4. Write a C program to print down stairs
+
+#include <stdio.h>
+int main() {
+    int n, i, j;
+    printf("Enter the number of steps: ");
+    scanf("%d", &n);
+    for (i = n; i >= 1; i--) {
+        for (j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        printf("\n"); 
+    }
+    return 0;
+}
+5. Floyd's Triangle: Write a program to print Floyd's triangle (numbers printed
+sequentially in rows).
+Sample Input: 4 rows
+Sample Output:
+1
+2 3
+4 5 6
+7 8 9 10
+
+#include <stdio.h>
+int main() {
+    int n, i, j,num=1;
+    printf("Enter the number of steps: ");
+    scanf("%d", &n);
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("%d ",num);
+            num++;
+        }
+        printf("\n"); 
+    }
+    return 0;
+}
+
+6. Palindrome Number Pattern: Write a program to print a number pyramid with
+reflective (palindrome) rows.
+Sample Input: 4 rows
+Sample Output:
+1
+121
+12321
+1234321
+#include <stdio.h>
+int main() {
+    int rows, i, j;
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    for (i = 1; i <= rows; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("%d", j);}
+        for (j = i - 1; j >= 1; j--) {
+            printf("%d", j);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+7. Simple Number Triangle (Increasing): Write a program to print a number
+triangle where each row increases sequentially from 1.
+Sample Input: 4 rows
+Sample Output:
+1
+12
+123
+1234
+#include <stdio.h>
+int main() {
+    int n, i, j;
+    printf("Enter the number of steps: ");
+    scanf("%d", &n);
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("%d ",j);
+        }
+        printf("\n"); 
+    }
+    return 0;
+}
+
+8.Square number pattern
+
+#include <stdio.h>
+int main() {
+    int n, i, j,num=1;
+    printf("Enter the size of the square: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= n; j++) {
+            printf("%d ",num);
+            num++;
+        }
+        printf("\n"); }
+    return 0;
+}
+
+
+9.. Number Pattern - Consecutive Repeating Digits: Write a program to print a
+number pattern where the row number is repeated that many times.
+Sample Input: 4 rows
+Sample Output:
+1
+2 2
+3 3 3
+4 4 4 4
+
+#include <stdio.h>
+int main() {
+    int n, i, j;
+    printf("Enter the number of steps: ");
+    scanf("%d", &n);
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("%d ",i);
+        }
+        printf("\n"); 
+    }
+    return 0;
+}
+10. Write a program to print all factors of a given integer
+number.
+Sample Input: 12
+Sample Output: 1, 2, 3, 4, 6, 12
+#include <stdio.h>
+int main() {
+    int n, i;
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+    printf("Factors of %d are: ", n);
+    for (i = 1; i <= n; i++) {
+        if (n % i == 0) { 
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+    return 0;
+}
+
+
+11. Write a program to print a solid centered
+pyramid (equilateral triangle) using *
+characters.
+
+#include <stdio.h>
+int main() {
+    int rows, i, j, space;
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    for (i = 1; i <= rows; i++) {
+        for (space = 1; space <= rows - i; space++) {
+            printf(" ");
+        }
+        for (j = 1; j <= (2 * i - 1); j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+11. Rhombus Star Pattern
+#include <stdio.h>
+int main() {
+    int rows, i, j, space;
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    for (i = 1; i <= rows; i++) {
+        for (space = 1; space <= rows - i; space++) {
+            printf(" ");
+        }
+        for (j = 1; j <= rows; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+13. Diamond Star Pattern
+#include <stdio.h>
+int main() {
+    int rows, i, j, space;
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    for (i = 1; i <= rows; i++) {
+        for (space = 1; space <= rows - i; space++) {
+            printf(" ");
+        }
+        for (j = 1; j <= (2 * i - 1); j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+    for (i = rows - 1; i >= 1; i--) {
+        for (space = 1; space <= rows - i; space++) {
+            printf(" ");
+        }
+        for (j = 1; j <= (2 * i - 1); j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+14. Pascal Triangle
+#include <stdio.h>
+
+int main() {
+    int rows, i, j, num;
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < rows - i - 1; j++) {
+            printf(" ");}
+        num = 1;
+        for (j = 0; j <= i; j++) {
+            printf("%d ", num);
+            num = num * (i - j) / (j + 1);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+15. Spiral Pattern: Write a program to fill an $N \times N$ matrix in a spiral
+(clockwise or counter-clockwise) order.
+Sample Input: $N=3$
+Sample Output:
+
+1 2 3
+8 9 4
+7 6 5
+
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter N (size of matrix): ");
+    scanf("%d", &n);
+
+    int arr[n][n];   // matrix
+    int top = 0, bottom = n - 1;
+    int left = 0, right = n - 1;
+    int num = 1;
+
+    // Fill matrix in spiral order
+    while (top <= bottom && left <= right) {
+        // Left to Right
+        for (int i = left; i <= right; i++) {
+            arr[top][i] = num++;
+        }
+        top++;
+
+        // Top to Bottom
+        for (int i = top; i <= bottom; i++) {
+            arr[i][right] = num++;
+        }
+        right--;
+
+        // Right to Left
+        if (top <= bottom) {
+            for (int i = right; i >= left; i--) {
+                arr[bottom][i] = num++;
+            }
+            bottom--;
+        }
+
+        // Bottom to Top
+        if (left <= right) {
+            for (int i = bottom; i >= top; i--) {
+                arr[i][left] = num++;
+            }
+            left++;
+        }
+    }
+
+    // Print the matrix
+    printf("\nSpiral Matrix:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
