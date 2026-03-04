@@ -1,0 +1,581 @@
+day 9
+Q1. Write a program to print "Hello, World!"
+#include <stdio.h>
+void hello_world() {
+    printf("Hello, World!\n");
+}
+int main() {
+    hello_world();
+    return 0;
+}
+Q2. Take two numbers as input and print their sum, difference, product, and quotient.
+#include <stdio.h>
+
+void arithmetic_operations(float a, float b) {
+    printf("Sum: %.2f\n", a + b);
+    printf("Difference: %.2f\n", a - b);
+    printf("Product: %.2f\n", a * b);
+    if (b != 0)
+        printf("Quotient: %.2f\n", a / b);
+    else
+        printf("Cannot divide by zero\n");
+}
+
+int main() {
+    float a, b;
+    printf("Enter two numbers: ");
+    scanf("%f %f", &a, &b);
+    arithmetic_operations(a, b);
+    return 0;
+}
+
+Q3. Check if a number is even or odd.
+#include <stdio.h>
+
+void check_even_odd(int n) {
+    if (n % 2 == 0)
+        printf("%d is Even\n", n);
+    else
+        printf("%d is Odd\n", n);
+}
+
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    check_even_odd(n);
+    return 0;
+}
+
+Q4. Print the multiplication table of a given number.
+#include <stdio.h>
+
+void multiplication_table(int n) {
+    printf("Multiplication Table of %d:\n", n);
+    for (int i = 1; i <= 10; i++) {
+        printf("%d x %d = %d\n", n, i, n * i);
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    multiplication_table(n);
+    return 0;
+}
+
+Q5. Find the largest of three numbers using if-else.
+#include <stdio.h>
+
+void find_largest(float a, float b, float c) {
+    if (a >= b && a >= c)
+        printf("Largest number is: %.2f\n", a);
+    else if (b >= a && b >= c)
+        printf("Largest number is: %.2f\n", b);
+    else
+        printf("Largest number is: %.2f\n", c);
+}
+
+int main() {
+    float a, b, c;
+    printf("Enter three numbers: ");
+    scanf("%f %f %f", &a, &b, &c);
+    find_largest(a, b, c);
+    return 0;
+}
+
+Q6. Calculate the factorial of a number using a loop.
+#include <stdio.h>
+
+void factorial(int n) {
+    long long result = 1;
+    for (int i = 1; i <= n; i++) {
+        result *= i;
+    }
+    printf("Factorial of %d is: %lld\n", n, result);
+}
+
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    factorial(n);
+    return 0;
+}
+
+Q7. Print all prime numbers between 1 and 100.
+#include <stdio.h>
+
+int is_prime(int n) {
+    if (n < 2) return 0;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) return 0;
+    }
+    return 1;
+}
+
+void print_primes() {
+    printf("Prime numbers between 1 and 100:\n");
+    for (int i = 1; i <= 100; i++) {
+        if (is_prime(i))
+            printf("%d ", i);
+    }
+    printf("\n");
+}
+
+int main() {
+    print_primes();
+    return 0;
+}
+
+Q8. Reverse a string without using built-in reverse functions.
+#include <stdio.h>
+#include <string.h>
+
+void reverse_string(char s[]) {
+    int len = strlen(s);
+    char reversed[100];
+    for (int i = 0; i < len; i++) {
+        reversed[i] = s[len - 1 - i];
+    }
+    reversed[len] = '\0';
+    printf("Reversed String: %s\n", reversed);
+}
+
+int main() {
+    char s[100];
+    printf("Enter a string: ");
+    scanf("%s", s);
+    reverse_string(s);
+    return 0;
+}
+
+Q9. Count the number of vowels in a given string.
+#include <stdio.h>
+#include <string.h>
+
+void count_vowels(char s[]) {
+    int count = 0;
+    for (int i = 0; s[i] != '\0'; i++) {
+        char ch = s[i];
+        if (ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||
+            ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U')
+            count++;
+    }
+    printf("Number of vowels: %d\n", count);
+}
+
+int main() {
+    char s[100];
+    printf("Enter a string: ");
+    scanf("%s", s);
+    count_vowels(s);
+    return 0;
+}
+
+Q10. Convert Celsius to Fahrenheit and vice versa.
+#include <stdio.h>
+
+void celsius_to_fahrenheit(float c) {
+    float f = (c * 9.0 / 5.0) + 32;
+    printf("%.2fC = %.2fF\n", c, f);
+}
+
+void fahrenheit_to_celsius(float f) {
+    float c = (f - 32) * 5.0 / 9.0;
+    printf("%.2fF = %.2fC\n", f, c);
+}
+
+int main() {
+    float c, f;
+    printf("Enter temperature in Celsius: ");
+    scanf("%f", &c);
+    celsius_to_fahrenheit(c);
+
+    printf("Enter temperature in Fahrenheit: ");
+    scanf("%f", &f);
+    fahrenheit_to_celsius(f);
+    return 0;
+}
+
+Q11. Check whether a given string is a palindrome.
+#include <stdio.h>
+#include <string.h>
+
+void is_palindrome(char s[]) {
+    int len = strlen(s);
+    int flag = 1;
+    for (int i = 0; i < len / 2; i++) {
+        if (s[i] != s[len - 1 - i]) {
+            flag = 0;
+            break;
+        }
+    }
+    if (flag)
+        printf("%s is a Palindrome\n", s);
+    else
+        printf("%s is not a Palindrome\n", s);
+}
+
+int main() {
+    char s[100];
+    printf("Enter a string: ");
+    scanf("%s", s);
+    is_palindrome(s);
+    return 0;
+}
+
+Q12. Find the second largest element in a list without sorting.
+#include <stdio.h>
+
+void second_largest(int arr[], int n) {
+    int first = -2147483648, second = -2147483648;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > first) {
+            second = first;
+            first = arr[i];
+        } else if (arr[i] > second && arr[i] != first) {
+            second = arr[i];
+        }
+    }
+    printf("Second Largest: %d\n", second);
+}
+
+int main() {
+    int arr[] = {10, 20, 4, 45, 99, 99};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    second_largest(arr, n);
+    return 0;
+}
+
+Q13. Write a program to implement a simple calculator using functions.
+#include <stdio.h>
+
+void add(float a, float b)      { printf("Sum: %.2f\n", a + b); }
+void subtract(float a, float b) { printf("Difference: %.2f\n", a - b); }
+void multiply(float a, float b) { printf("Product: %.2f\n", a * b); }
+void divide(float a, float b) {
+    if (b != 0) printf("Quotient: %.2f\n", a / b);
+    else printf("Cannot divide by zero\n");
+}
+
+void calculator(float a, char op, float b) {
+    if (op == '+') add(a, b);
+    else if (op == '-') subtract(a, b);
+    else if (op == '*') multiply(a, b);
+    else if (op == '/') divide(a, b);
+    else printf("Invalid operator\n");
+}
+
+int main() {
+    float a, b;
+    char op;
+    printf("Enter: num operator num: ");
+    scanf("%f %c %f", &a, &op, &b);
+    calculator(a, op, b);
+    return 0;
+}
+
+Q14. Find the Sum of All Elements in an Array.
+#include <stdio.h>
+
+void array_sum(int arr[], int n) {
+    int total = 0;
+    for (int i = 0; i < n; i++) {
+        total += arr[i];
+    }
+    printf("Sum of array elements: %d\n", total);
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    array_sum(arr, n);
+    return 0;
+}
+
+Q15. Find the Maximum and Minimum in an Array.
+#include <stdio.h>
+
+void find_max_min(int arr[], int n) {
+    int max = arr[0], min = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) max = arr[i];
+        if (arr[i] < min) min = arr[i];
+    }
+    printf("Maximum: %d\n", max);
+    printf("Minimum: %d\n", min);
+}
+
+int main() {
+    int arr[] = {3, 1, 7, 2, 9, 4};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    find_max_min(arr, n);
+    return 0;
+}
+
+Q16. Remove Duplicates from an Array.
+#include <stdio.h>
+
+void remove_duplicates(int arr[], int n) {
+    int result[100], size = 0;
+    for (int i = 0; i < n; i++) {
+        int found = 0;
+        for (int j = 0; j < size; j++) {
+            if (result[j] == arr[i]) { found = 1; break; }
+        }
+        if (!found) result[size++] = arr[i];
+    }
+    printf("Array without duplicates: ");
+    for (int i = 0; i < size; i++)
+        printf("%d ", result[i]);
+    printf("\n");
+}
+
+int main() {
+    int arr[] = {1, 2, 2, 3, 4, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    remove_duplicates(arr, n);
+    return 0;
+}
+
+Q17. Rotate an Array by K Positions.
+#include <stdio.h>
+
+void rotate_array(int arr[], int n, int k) {
+    k = k % n;
+    int rotated[100];
+    for (int i = 0; i < n; i++) {
+        rotated[i] = arr[(i + k) % n];
+    }
+    printf("Rotated Array: ");
+    for (int i = 0; i < n; i++)
+        printf("%d ", rotated[i]);
+    printf("\n");
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int k;
+    printf("Enter K positions: ");
+    scanf("%d", &k);
+    rotate_array(arr, n, k);
+    return 0;
+}
+
+Q18. Merge Two Sorted Arrays.
+#include <stdio.h>
+
+void merge_sorted(int arr1[], int n1, int arr2[], int n2) {
+    int result[200];
+    int i = 0, j = 0, k = 0;
+    while (i < n1 && j < n2) {
+        if (arr1[i] < arr2[j]) result[k++] = arr1[i++];
+        else result[k++] = arr2[j++];
+    }
+    while (i < n1) result[k++] = arr1[i++];
+    while (j < n2) result[k++] = arr2[j++];
+    printf("Merged Array: ");
+    for (int x = 0; x < k; x++)
+        printf("%d ", result[x]);
+    printf("\n");
+}
+
+int main() {
+    int arr1[] = {1, 3, 5, 7};
+    int arr2[] = {2, 4, 6, 8};
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+    merge_sorted(arr1, n1, arr2, n2);
+    return 0;
+}
+
+Q19. Find All Pairs That Sum to a Target.
+#include <stdio.h>
+
+void find_pairs(int arr[], int n, int target) {
+    printf("Pairs summing to %d:\n", target);
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] + arr[j] == target)
+                printf("(%d, %d)\n", arr[i], arr[j]);
+        }
+    }
+}
+
+int main() {
+    int arr[] = {1, 5, 3, 7, 2, 8};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int target;
+    printf("Enter target sum: ");
+    scanf("%d", &target);
+    find_pairs(arr, n, target);
+    return 0;
+}
+
+Q20. Count Occurrences of a Substring.
+#include <stdio.h>
+#include <string.h>
+
+void count_substring(char s[], char sub[]) {
+    int count = 0;
+    int slen = strlen(s), sublen = strlen(sub);
+    for (int i = 0; i <= slen - sublen; i++) {
+        int match = 1;
+        for (int j = 0; j < sublen; j++) {
+            if (s[i + j] != sub[j]) { match = 0; break; }
+        }
+        if (match) count++;
+    }
+    printf("'%s' appears %d time(s) in '%s'\n", sub, count, s);
+}
+
+int main() {
+    char s[100], sub[50];
+    printf("Enter main string: ");
+    scanf("%s", s);
+    printf("Enter substring: ");
+    scanf("%s", sub);
+    count_substring(s, sub);
+    return 0;
+}
+
+Q21. Remove All Spaces from a String.
+#include <stdio.h>
+
+void remove_spaces(char s[]) {
+    char result[100];
+    int k = 0;
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] != ' ')
+            result[k++] = s[i];
+    }
+    result[k] = '\0';
+    printf("String without spaces: %s\n", result);
+}
+
+int main() {
+    char s[100];
+    printf("Enter a string: ");
+    gets(s);
+    remove_spaces(s);
+    return 0;
+}
+
+Q22. Reverse Each Word in a Sentence.
+#include <stdio.h>
+#include <string.h>
+
+void reverse_word(char word[]) {
+    int len = strlen(word);
+    for (int i = 0; i < len / 2; i++) {
+        char temp = word[i];
+        word[i] = word[len - 1 - i];
+        word[len - 1 - i] = temp;
+    }
+}
+
+void reverse_each_word(char sentence[]) {
+    char word[50];
+    int k = 0;
+    printf("Reversed Words: ");
+    for (int i = 0; sentence[i] != '\0'; i++) {
+        if (sentence[i] != ' ') {
+            word[k++] = sentence[i];
+        } else {
+            word[k] = '\0';
+            reverse_word(word);
+            printf("%s ", word);
+            k = 0;
+        }
+    }
+    word[k] = '\0';
+    reverse_word(word);
+    printf("%s\n", word);
+}
+
+int main() {
+    char sentence[200];
+    printf("Enter a sentence: ");
+    gets(sentence);
+    reverse_each_word(sentence);
+    return 0;
+}
+
+Q23. Find the Most Frequent Character in a String.
+#include <stdio.h>
+#include <string.h>
+
+void most_frequent_char(char s[]) {
+    int freq[256] = {0};
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (s[i] != ' ')
+            freq[(int)s[i]]++;
+    }
+    int max = 0;
+    char max_char = s[0];
+    for (int i = 0; s[i] != '\0'; i++) {
+        if (freq[(int)s[i]] > max) {
+            max = freq[(int)s[i]];
+            max_char = s[i];
+        }
+    }
+    printf("Most Frequent Character: %c | Count: %d\n", max_char, max);
+}
+
+int main() {
+    char s[100];
+    printf("Enter a string: ");
+    scanf("%s", s);
+    most_frequent_char(s);
+    return 0;
+}
+
+Q24. Check if Two Strings are Anagrams.
+#include <stdio.h>
+#include <string.h>
+
+void are_anagrams(char s1[], char s2[]) {
+    int freq[256] = {0};
+    for (int i = 0; s1[i] != '\0'; i++) freq[(int)s1[i]]++;
+    for (int i = 0; s2[i] != '\0'; i++) freq[(int)s2[i]]--;
+    for (int i = 0; i < 256; i++) {
+        if (freq[i] != 0) {
+            printf("%s and %s are NOT Anagrams\n", s1, s2);
+            return;
+        }
+    }
+    printf("%s and %s are Anagrams\n", s1, s2);
+}
+
+int main() {
+    char s1[100], s2[100];
+    printf("Enter first string: ");
+    scanf("%s", s1);
+    printf("Enter second string: ");
+    scanf("%s", s2);
+    are_anagrams(s1, s2);
+    return 0;
+}
+
+Q25. Count Even and Odd Numbers in an Array.
+#include <stdio.h>
+
+void count_even_odd(int arr[], int n) {
+    int even = 0, odd = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] % 2 == 0) even++;
+        else odd++;
+    }
+    printf("Even count: %d\n", even);
+    printf("Odd count: %d\n", odd);
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    count_even_odd(arr, n);
+    return 0;
+}
