@@ -1,0 +1,594 @@
+day 12
+Q1. Write a function to store and display student details (name, roll, marks) using structure and pointer.
+ 
+#include <stdio.h>
+struct Student {
+    char name[50];
+    int roll;
+    float marks;
+};
+void getStudent(struct Student *s) {
+    printf("Enter Name: "); scanf("%s", s->name);
+    printf("Enter Roll: "); scanf("%d", &s->roll);
+    printf("Enter Marks: "); scanf("%f", &s->marks);
+}
+void display(struct Student *s) {
+    printf("Name: %s\nRoll: %d\nMarks: %.2f\n", s->name, s->roll, s->marks);
+}
+int main() {
+    struct Student s;
+    getStudent(&s);
+    display(&s);
+    return 0;
+}
+ 
+ 
+Q2. Write a function to find the largest element in an array using pointer arithmetic.
+ 
+#include <stdio.h>
+int largest(int *p, int n) {
+    int max = *p;
+    int i;
+    for (i = 1; i < n; i++)
+        if (*(p + i) > max) max = *(p + i);
+    return max;
+}
+int main() {
+    int arr[] = {5, 12, 3, 8, 20, 7};
+    printf("Largest: %d\n", largest(arr, 6));
+    return 0;
+}
+ 
+ 
+Q3. Write a function to calculate the sum of all elements in an array using pointer.
+ 
+#include <stdio.h>
+int sumArray(int *p, int n) {
+    int sum = 0, i;
+    for (i = 0; i < n; i++)
+        sum += *(p + i);
+    return sum;
+}
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    printf("Sum: %d\n", sumArray(arr, 5));
+    return 0;
+}
+ 
+ 
+Q4. Write a function to reverse an array using pointers and print the result.
+ 
+#include <stdio.h>
+void reverseArray(int *p, int n) {
+    int *start = p;
+    int *end = p + n - 1;
+    int temp;
+    while (start < end) {
+        temp = *start;
+        *start = *end;
+        *end = temp;
+        start++; end--;
+    }
+}
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int i;
+    reverseArray(arr, 5);
+    for (i = 0; i < 5; i++) printf("%d ", arr[i]);
+    printf("\n");
+    return 0;
+}
+ 
+ 
+Q5. Write a function that accepts a structure pointer and updates the salary of an employee.
+ 
+#include <stdio.h>
+struct Employee {
+    char name[50];
+    float salary;
+};
+void updateSalary(struct Employee *e, float newSalary) {
+    e->salary = newSalary;
+}
+int main() {
+    struct Employee e;
+    printf("Enter Name: "); scanf("%s", e.name);
+    printf("Enter Salary: "); scanf("%f", &e.salary);
+    printf("Old Salary: %.2f\n", e.salary);
+    updateSalary(&e, 75000);
+    printf("New Salary: %.2f\n", e.salary);
+    return 0;
+}
+ 
+ 
+Q6. Write a function to count even and odd numbers in an array using pointer traversal.
+ 
+#include <stdio.h>
+void countEvenOdd(int *p, int n, int *even, int *odd) {
+    *even = 0; *odd = 0;
+    int i;
+    for (i = 0; i < n; i++) {
+        if (*(p + i) % 2 == 0) (*even)++;
+        else (*odd)++;
+    }
+}
+int main() {
+    int arr[] = {1, 2, 3, 4, 5, 6};
+    int even, odd;
+    countEvenOdd(arr, 6, &even, &odd);
+    printf("Even: %d\nOdd: %d\n", even, odd);
+    return 0;
+}
+ 
+ 
+Q7. Write a function that takes an array pointer and returns the second largest element.
+ 
+#include <stdio.h>
+int secondLargest(int *p, int n) {
+    int first = -1, second = -1, i;
+    for (i = 0; i < n; i++) {
+        if (*(p+i) > first) { second = first; first = *(p+i); }
+        else if (*(p+i) > second && *(p+i) != first) second = *(p+i);
+    }
+    return second;
+}
+int main() {
+    int arr[] = {10, 5, 20, 15, 8};
+    printf("Second Largest: %d\n", secondLargest(arr, 5));
+    return 0;
+}
+ 
+ 
+Q8. Write a function to copy one array to another using pointer arithmetic (no index).
+ 
+#include <stdio.h>
+void copyArray(int *src, int *dest, int n) {
+    int i;
+    for (i = 0; i < n; i++)
+        *(dest + i) = *(src + i);
+}
+int main() {
+    int src[] = {1, 2, 3, 4, 5};
+    int dest[5], i;
+    copyArray(src, dest, 5);
+    for (i = 0; i < 5; i++) printf("%d ", dest[i]);
+    printf("\n");
+    return 0;
+}
+ 
+ 
+Q9. Write a function that accepts a pointer to a structure array and displays all student records.
+ 
+#include <stdio.h>
+struct Student {
+    char name[50];
+    int roll;
+    float marks;
+};
+void displayAll(struct Student *s, int n) {
+    int i;
+    for (i = 0; i < n; i++)
+        printf("Name: %s Roll: %d Marks: %.2f\n",
+               (s+i)->name, (s+i)->roll, (s+i)->marks);
+}
+int main() {
+    struct Student s[3] = {{"Alice",1,90},{"Bob",2,85},{"Carol",3,78}};
+    displayAll(s, 3);
+    return 0;
+}
+ 
+ 
+Q10. Write a function to search for a value in an array using pointer and return its position.
+ 
+#include <stdio.h>
+int search(int *p, int n, int key) {
+    int i;
+    for (i = 0; i < n; i++)
+        if (*(p + i) == key) return i;
+    return -1;
+}
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int pos = search(arr, 5, 30);
+    if (pos != -1) printf("Found at index: %d\n", pos);
+    else printf("Not found\n");
+    return 0;
+}
+ 
+ 
+Q11. Write a function that takes a pointer to an array and sorts it in ascending order using bubble sort.
+ 
+#include <stdio.h>
+void bubbleSort(int *p, int n) {
+    int i, j, temp;
+    for (i = 0; i < n-1; i++)
+        for (j = 0; j < n-i-1; j++)
+            if (*(p+j) > *(p+j+1)) {
+                temp = *(p+j);
+                *(p+j) = *(p+j+1);
+                *(p+j+1) = temp;
+            }
+}
+int main() {
+    int arr[] = {5, 3, 8, 1, 9, 2};
+    int i;
+    bubbleSort(arr, 6);
+    for (i = 0; i < 6; i++) printf("%d ", arr[i]);
+    printf("\n");
+    return 0;
+}
+ 
+ 
+Q12. Write a function that accepts a structure pointer and finds the student with minimum marks.
+ 
+#include <stdio.h>
+struct Student { char name[50]; float marks; };
+struct Student* minMarks(struct Student *s, int n) {
+    struct Student *min = s;
+    int i;
+    for (i = 1; i < n; i++)
+        if ((s+i)->marks < min->marks) min = s+i;
+    return min;
+}
+int main() {
+    struct Student s[3] = {{"Alice",90},{"Bob",60},{"Carol",75}};
+    struct Student *m = minMarks(s, 3);
+    printf("Min Marks: %s - %.2f\n", m->name, m->marks);
+    return 0;
+}
+ 
+ 
+Q13. Write a function to find the sum and average of array elements using pointer and return both via pointer parameters.
+ 
+#include <stdio.h>
+void sumAvg(int *p, int n, int *sum, float *avg) {
+    *sum = 0;
+    int i;
+    for (i = 0; i < n; i++) *sum += *(p + i);
+    *avg = (float)(*sum) / n;
+}
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int sum; float avg;
+    sumAvg(arr, 5, &sum, &avg);
+    printf("Sum: %d\nAverage: %.2f\n", sum, avg);
+    return 0;
+}
+ 
+ 
+Q14. Write a function to concatenate two strings using only pointer arithmetic (no strcat, no []).
+ 
+#include <stdio.h>
+void myConcat(char *dest, char *src) {
+    while (*dest != '\0') dest++;
+    while (*src != '\0') { *dest = *src; dest++; src++; }
+    *dest = '\0';
+}
+int main() {
+    char s1[100] = "Hello ";
+    char s2[] = "World";
+    myConcat(s1, s2);
+    printf("%s\n", s1);
+    return 0;
+}
+ 
+ 
+Q15. Write a function that takes a pointer to a structure array of employees and returns a pointer to the highest paid employee.
+ 
+#include <stdio.h>
+struct Employee { char name[50]; float salary; };
+struct Employee* highestPaid(struct Employee *e, int n) {
+    struct Employee *max = e;
+    int i;
+    for (i = 1; i < n; i++)
+        if ((e+i)->salary > max->salary) max = e+i;
+    return max;
+}
+int main() {
+    struct Employee e[3]={{"Alice",50000},{"Bob",80000},{"Carol",65000}};
+    struct Employee *h = highestPaid(e, 3);
+    printf("Highest Paid: %s - %.2f\n", h->name, h->salary);
+    return 0;
+}
+ 
+ 
+Q16. Write a function using pointer to count the frequency of a given element in an array.
+ 
+#include <stdio.h>
+int frequency(int *p, int n, int key) {
+    int count = 0, i;
+    for (i = 0; i < n; i++)
+        if (*(p + i) == key) count++;
+    return count;
+}
+int main() {
+    int arr[] = {1, 2, 3, 2, 4, 2, 5};
+    printf("Frequency of 2: %d\n", frequency(arr, 7, 2));
+    return 0;
+}
+ 
+ 
+Q17. Write a function to find the sum of diagonal elements of a 2D array using pointer notation.
+ 
+#include <stdio.h>
+#define N 3
+int diagSum(int (*p)[N]) {
+    int sum = 0, i;
+    for (i = 0; i < N; i++)
+        sum += *(*(p + i) + i);
+    return sum;
+}
+int main() {
+    int mat[N][N] = {{1,2,3},{4,5,6},{7,8,9}};
+    printf("Diagonal Sum: %d\n", diagSum(mat));
+    return 0;
+}
+ 
+ 
+Q18. Write a function that accepts a structure pointer and swaps the data of two students.
+ 
+#include <stdio.h>
+struct Student { char name[50]; int roll; float marks; };
+void swapStudents(struct Student *a, struct Student *b) {
+    struct Student temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int main() {
+    struct Student s1 = {"Alice", 1, 90};
+    struct Student s2 = {"Bob",   2, 75};
+    swapStudents(&s1, &s2);
+    printf("s1: %s %d %.2f\n", s1.name, s1.roll, s1.marks);
+    printf("s2: %s %d %.2f\n", s2.name, s2.roll, s2.marks);
+    return 0;
+}
+ 
+ 
+Q19. Write a function to remove duplicate elements from an array using pointer arithmetic.
+ 
+#include <stdio.h>
+int removeDuplicates(int *p, int n) {
+    int i, j, k, newSize = n;
+    for (i = 0; i < newSize; i++)
+        for (j = i+1; j < newSize; j++)
+            if (*(p+i) == *(p+j)) {
+                for (k = j; k < newSize-1; k++)
+                    *(p+k) = *(p+k+1);
+                newSize--; j--;
+            }
+    return newSize;
+}
+int main() {
+    int arr[] = {1, 2, 2, 3, 4, 3, 5};
+    int n = removeDuplicates(arr, 7), i;
+    for (i = 0; i < n; i++) printf("%d ", arr[i]);
+    printf("\n");
+    return 0;
+}
+ 
+ 
+Q20. Write a function that takes a pointer to a structure array and sorts employees by salary using bubble sort.
+ 
+#include <stdio.h>
+struct Employee { char name[50]; float salary; };
+void sortBySalary(struct Employee *e, int n) {
+    int i, j;
+    struct Employee temp;
+    for (i = 0; i < n-1; i++)
+        for (j = 0; j < n-i-1; j++)
+            if ((e+j)->salary > (e+j+1)->salary) {
+                temp = *(e+j);
+                *(e+j) = *(e+j+1);
+                *(e+j+1) = temp;
+            }
+}
+int main() {
+    struct Employee e[3]={{"Alice",50000},{"Bob",30000},{"Carol",70000}};
+    int i;
+    sortBySalary(e, 3);
+    for (i = 0; i < 3; i++)
+        printf("%s - %.2f\n", e[i].name, e[i].salary);
+    return 0;
+}
+ 
+ 
+Q21. Write a function to multiply two matrices using pointer notation and store the result in a third matrix.
+ 
+#include <stdio.h>
+#define N 2
+void multiply(int (*a)[N], int (*b)[N], int (*c)[N]) {
+    int i, j, k;
+    for (i = 0; i < N; i++)
+        for (j = 0; j < N; j++) {
+            *(*(c+i)+j) = 0;
+            for (k = 0; k < N; k++)
+                *(*(c+i)+j) += *(*(a+i)+k) * *(*(b+k)+j);
+        }
+}
+int main() {
+    int a[N][N]={{1,2},{3,4}};
+    int b[N][N]={{5,6},{7,8}};
+    int c[N][N]; int i, j;
+    multiply(a, b, c);
+    for (i=0;i<N;i++){for(j=0;j<N;j++) printf("%d ",c[i][j]); printf("\n");}
+    return 0;
+}
+ 
+ 
+Q22. Write a function that accepts a pointer to a character array and reverses the string in place.
+ 
+#include <stdio.h>
+void reverseStr(char *p) {
+    char *end = p;
+    char temp;
+    while (*end != '\0') end--;
+    end--;
+    while (p < end) {
+        temp = *p; *p = *end; *end = temp;
+        p++; end--;
+    }
+}
+int main() {
+    char str[] = "Hello";
+    reverseStr(str);
+    printf("Reversed: %s\n", str);
+    return 0;
+}
+ 
+ 
+Q23. Write a function to find the smallest and largest elements in a structure array of products (name, price) using pointer.
+ 
+#include <stdio.h>
+struct Product { char name[50]; float price; };
+void minMax(struct Product *p, int n,
+            struct Product **mn, struct Product **mx) {
+    *mn = *mx = p;
+    int i;
+    for (i = 1; i < n; i++) {
+        if ((p+i)->price < (*mn)->price) *mn = p+i;
+        if ((p+i)->price > (*mx)->price) *mx = p+i;
+    }
+}
+int main() {
+    struct Product p[3]={{"Apple",30},{"Mango",80},{"Banana",20}};
+    struct Product *mn, *mx;
+    minMax(p, 3, &mn, &mx);
+    printf("Cheapest: %s %.2f\n", mn->name, mn->price);
+    printf("Costliest: %s %.2f\n", mx->name, mx->price);
+    return 0;
+}
+ 
+ 
+Q24. Write a function that accepts a double pointer (int **) and fills an array with squares of 1 to n.
+ 
+#include <stdio.h>
+void fillSquares(int **pp, int n) {
+    int i;
+    for (i = 0; i < n; i++)
+        *(*pp + i) = (i+1) * (i+1);
+}
+int main() {
+    int arr[5], i;
+    int *p = arr;
+    fillSquares(&p, 5);
+    for (i = 0; i < 5; i++) printf("%d ", arr[i]);
+    printf("\n");
+    return 0;
+}
+ 
+ 
+Q25. Write a function to merge two sorted arrays into a third sorted array using pointer arithmetic.
+ 
+#include <stdio.h>
+void mergeSorted(int *a, int m, int *b, int n, int *c) {
+    int i=0, j=0, k=0;
+    while (i < m && j < n) {
+        if (*(a+i) <= *(b+j)) { *(c+k) = *(a+i); i++; }
+        else                  { *(c+k) = *(b+j); j++; }
+        k++;
+    }
+    while (i < m) { *(c+k) = *(a+i); i++; k++; }
+    while (j < n) { *(c+k) = *(b+j); j++; k++; }
+}
+int main() {
+    int a[]={1,3,5}, b[]={2,4,6}, c[6], i;
+    mergeSorted(a, 3, b, 3, c);
+    for (i = 0; i < 6; i++) printf("%d ", c[i]);
+    printf("\n");
+    return 0;
+}
+ 
+ 
+Q26. Write a function that accepts a pointer to a structure array of books and counts how many books cost more than a given price.
+ 
+#include <stdio.h>
+struct Book { char title[50]; float price; };
+int countExpensive(struct Book *b, int n, float limit) {
+    int count = 0, i;
+    for (i = 0; i < n; i++)
+        if ((b+i)->price > limit) count++;
+    return count;
+}
+int main() {
+    struct Book b[4]={{"A",200},{"B",500},{"C",150},{"D",800}};
+    printf("Books > 300: %d\n", countExpensive(b, 4, 300));
+    return 0;
+}
+ 
+ 
+Q27. Write a function to transpose a 2D matrix using pointer notation and print the result.
+ 
+#include <stdio.h>
+#define R 2
+#define C 3
+void transpose(int (*a)[C], int t[][R]) {
+    int i, j;
+    for (i = 0; i < R; i++)
+        for (j = 0; j < C; j++)
+            *(*(t+j)+i) = *(*(a+i)+j);
+}
+int main() {
+    int a[R][C]={{1,2,3},{4,5,6}};
+    int t[C][R]; int i, j;
+    transpose(a, t);
+    for (i=0;i<C;i++){for(j=0;j<R;j++) printf("%d ",t[i][j]); printf("\n");}
+    return 0;
+}
+ 
+ 
+Q28. Write a function that accepts a pointer to an array of structures (Point: x, y) and calculates the distance of each point from the origin.
+ 
+#include <stdio.h>
+#include <math.h>
+struct Point { int x; int y; };
+void distances(struct Point *p, int n) {
+    int i;
+    for (i = 0; i < n; i++) {
+        float d = sqrt((p+i)->x*(p+i)->x + (p+i)->y*(p+i)->y);
+        printf("Point(%d,%d) -> Distance: %.2f\n",
+               (p+i)->x, (p+i)->y, d);
+    }
+}
+int main() {
+    struct Point pts[3] = {{3,4},{1,1},{0,5}};
+    distances(pts, 3);
+    return 0;
+}
+ 
+ 
+Q29. Write a function that uses a pointer to a structure array to find and return the structure with the maximum value in a given field.
+ 
+#include <stdio.h>
+struct Student { char name[50]; int marks; };
+struct Student* topStudent(struct Student *s, int n) {
+    struct Student *top = s;
+    int i;
+    for (i = 1; i < n; i++)
+        if ((s+i)->marks > top->marks) top = s+i;
+    return top;
+}
+int main() {
+    struct Student s[3]={{"Alice",88},{"Bob",95},{"Carol",76}};
+    struct Student *t = topStudent(s, 3);
+    printf("Top Student: %s with %d marks\n", t->name, t->marks);
+    return 0;
+}
+ 
+ 
+Q30. Write a function that accepts a pointer to a 2D array and checks whether it is a symmetric matrix using pointer notation.
+ 
+#include <stdio.h>
+#define N 3
+int isSymmetric(int (*p)[N]) {
+    int i, j;
+    for (i = 0; i < N; i++)
+        for (j = 0; j < N; j++)
+            if (*(*(p+i)+j) != *(*(p+j)+i)) return 0;
+    return 1;
+}
+int main() {
+    int mat[N][N]={{1,2,3},{2,4,5},{3,5,6}};
+    if (isSymmetric(mat)) printf("Symmetric\n");
+    else printf("Not Symmetric\n");
+    return 0;
+}
