@@ -1,0 +1,372 @@
+day 11
+Q1. Write a program that declares a pointer, assigns it the address of a variable, and prints both the address and the value using the pointer.
+ 
+#include <stdio.h>
+int main() {
+    int a = 10;
+    int *p = &a;
+    printf("Address: %p\n", p);
+    printf("Value: %d\n", *p);
+    return 0;
+}
+ 
+ 
+Q2. Declare a pointer to an integer, assign it to an existing variable, and print the value using the pointer.
+ 
+#include <stdio.h>
+int main() {
+    int num = 25;
+    int *p;
+    p = &num;
+    printf("Value using pointer: %d\n", *p);
+    return 0;
+}
+ 
+ 
+Q3. Write a program that uses the & operator to print the memory address of an int, a float, and a char variable.
+ 
+#include <stdio.h>
+int main() {
+    int a = 1;
+    float b = 2.5;
+    char c = 'X';
+    printf("Address of int   : %p\n", &a);
+    printf("Address of float : %p\n", &b);
+    printf("Address of char  : %p\n", &c);
+    return 0;
+}
+ 
+ 
+Q4. Write a program that uses the * operator to dereference a pointer and modify the original variable's value.
+ 
+#include <stdio.h>
+int main() {
+    int x = 10;
+    int *p = &x;
+    printf("Before: %d\n", x);
+    *p = 50;
+    printf("After: %d\n", x);
+    return 0;
+}
+ 
+ 
+Q5. Write a program that declares a NULL pointer, checks if it is NULL before dereferencing, and prints an appropriate message.
+ 
+#include <stdio.h>
+int main() {
+    int *p = NULL;
+    if (p == NULL)
+        printf("Pointer is NULL. Cannot dereference.\n");
+    else
+        printf("Value: %d\n", *p);
+    return 0;
+}
+ 
+ 
+Q6. Write a program that prints the size of pointers of different types: int*, char*, double*, and void*.
+ 
+#include <stdio.h>
+int main() {
+    printf("Size of int*    : %lu bytes\n", sizeof(int *));
+    printf("Size of char*   : %lu bytes\n", sizeof(char *));
+    printf("Size of double* : %lu bytes\n", sizeof(double *));
+    printf("Size of void*   : %lu bytes\n", sizeof(void *));
+    return 0;
+}
+ 
+ 
+Q7. Write a function void setValue(int *p, int val) that changes the value of a variable via pointer. Call it from main() and print the result.
+ 
+#include <stdio.h>
+void setValue(int *p, int val) {
+    *p = val;
+}
+int main() {
+    int x = 0;
+    setValue(&x, 99);
+    printf("Value: %d\n", x);
+    return 0;
+}
+ 
+ 
+Q8. Write a program using int **pp (pointer to pointer) to modify a variable's value through two levels of indirection and print the result.
+ 
+#include <stdio.h>
+int main() {
+    int a = 5;
+    int *p = &a;
+    int **pp = &p;
+    **pp = 100;
+    printf("Value of a: %d\n", a);
+    return 0;
+}
+ 
+ 
+Q9. Write a program where int *p points to the first element of an array. Use p+1, p+2, etc. to print all elements without using array indexing.
+ 
+#include <stdio.h>
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int *p = arr;
+    int i;
+    for (i = 0; i < 5; i++)
+        printf("%d ", *(p + i));
+    printf("\n");
+    return 0;
+}
+ 
+ 
+Q10. Write a program that accesses array elements using pointer notation *(arr + i) instead of arr[i] and prints each element.
+ 
+#include <stdio.h>
+int main() {
+    int arr[] = {5, 10, 15, 20, 25};
+    int i;
+    for (i = 0; i < 5; i++)
+        printf("%d ", *(arr + i));
+    printf("\n");
+    return 0;
+}
+ 
+ 
+Q11. Write a program that demonstrates the difference between *p++ and (*p)++ using two separate integer variables and prints both results.
+ 
+#include <stdio.h>
+int main() {
+    int a = 10, b = 10;
+    int *p1 = &a;
+    int *p2 = &b;
+    int x = *p1++;   /* value of a, then p1 moves */
+    int y = (*p2)++; /* b incremented, b becomes 11 */
+    printf("*p1++ : x = %d, a = %d\n", x, a);
+    printf("(*p2)++: y = %d, b = %d\n", y, b);
+    return 0;
+}
+ 
+ 
+Q12. Write a program that uses a void * pointer to store both an int and a float, casting appropriately before dereferencing and printing.
+ 
+#include <stdio.h>
+int main() {
+    void *vp;
+    int a = 42;
+    float f = 3.14;
+    vp = &a;
+    printf("Int value  : %d\n", *(int *)vp);
+    vp = &f;
+    printf("Float value: %.2f\n", *(float *)vp);
+    return 0;
+}
+ 
+ 
+Q13. Write a program demonstrating the difference between const int *p (pointer to constant) and int * const p (constant pointer), showing which assignments compile and which do not.
+ 
+#include <stdio.h>
+int main() {
+    int a = 10, b = 20;
+    /* Pointer to constant: cannot change *p, but can change p */
+    const int *p1 = &a;
+    p1 = &b;           /* allowed */
+    /* *p1 = 30;       NOT allowed */
+    printf("p1 points to b: %d\n", *p1);
+    /* Constant pointer: cannot change p, but can change *p */
+    int * const p2 = &a;
+    *p2 = 50;          /* allowed */
+    /* p2 = &b;        NOT allowed */
+    printf("p2 value of a: %d\n", *p2);
+    return 0;
+}
+ 
+ 
+Q14. Write a function void doubleIt(int **pp) that takes a pointer-to-pointer and doubles the value it ultimately points to. Call it from main() and print the result.
+ 
+#include <stdio.h>
+void doubleIt(int **pp) {
+    **pp = **pp * 2;
+}
+int main() {
+    int x = 7;
+    int *p = &x;
+    doubleIt(&p);
+    printf("Doubled value: %d\n", x);
+    return 0;
+}
+ 
+ 
+Q15. Write a function that uses pointers to return two values (sum and difference) from a single function call. Print both in main().
+ 
+#include <stdio.h>
+void sumDiff(int a, int b, int *sum, int *diff) {
+    *sum  = a + b;
+    *diff = a - b;
+}
+int main() {
+    int s, d;
+    sumDiff(10, 4, &s, &d);
+    printf("Sum: %d\nDifference: %d\n", s, d);
+    return 0;
+}
+ 
+ 
+Q16. Rewrite the strlen() function using only pointer arithmetic — no array indexing, no [] operator.
+ 
+#include <stdio.h>
+int myStrlen(char *s) {
+    char *p = s;
+    while (*p != '\0')
+        p++;
+    return p - s;
+}
+int main() {
+    char str[] = "Hello";
+    printf("Length: %d\n", myStrlen(str));
+    return 0;
+}
+ 
+ 
+Q17. Write a program that iterates over an array using a pointer variable with p++ instead of an integer index, and prints each element.
+ 
+#include <stdio.h>
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int *p = arr;
+    int *end = arr + 5;
+    while (p < end) {
+        printf("%d ", *p);
+        p++;
+    }
+    printf("\n");
+    return 0;
+}
+ 
+ 
+Q18. Define a struct Point { int x; int y; }. Create a pointer to it, set its members using ->, and print them.
+ 
+#include <stdio.h>
+struct Point {
+    int x;
+    int y;
+};
+int main() {
+    struct Point pt;
+    struct Point *p = &pt;
+    p->x = 3;
+    p->y = 7;
+    printf("x = %d, y = %d\n", p->x, p->y);
+    return 0;
+}
+ 
+ 
+Q19. Write a function pointer that points to int add(int a, int b). Call the function through the pointer and print the result.
+ 
+#include <stdio.h>
+int add(int a, int b) {
+    return a + b;
+}
+int main() {
+    int (*fp)(int, int) = add;
+    printf("Sum: %d\n", fp(4, 6));
+    return 0;
+}
+ 
+ 
+Q20. Write a program that uses a function pointer as a callback — implement int apply(int a, int b, int (*op)(int, int)) and pass both an add and a multiply function to it.
+ 
+#include <stdio.h>
+int add(int a, int b)      { return a + b; }
+int multiply(int a, int b) { return a * b; }
+int apply(int a, int b, int (*op)(int, int)) {
+    return op(a, b);
+}
+int main() {
+    printf("Add     : %d\n", apply(3, 4, add));
+    printf("Multiply: %d\n", apply(3, 4, multiply));
+    return 0;
+}
+ 
+ 
+Q21. Write a function that takes char *arr as a parameter and modifies the first character. Show that the change is reflected in main().
+ 
+#include <stdio.h>
+void changeFirst(char *arr) {
+    *arr = 'Z';
+}
+int main() {
+    char str[] = "Hello";
+    printf("Before: %s\n", str);
+    changeFirst(str);
+    printf("After : %s\n", str);
+    return 0;
+}
+ 
+ 
+Q22. Write a program that declares a 2D array and uses pointer notation to access and print each element.
+ 
+#include <stdio.h>
+int main() {
+    int arr[2][3] = {{1,2,3},{4,5,6}};
+    int i, j;
+    for (i = 0; i < 2; i++)
+        for (j = 0; j < 3; j++)
+            printf("%d ", *(*(arr + i) + j));
+    printf("\n");
+    return 0;
+}
+ 
+ 
+Q23. Write a program that swaps two integers using pointers inside a void swap(int *a, int *b) function.
+ 
+#include <stdio.h>
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int main() {
+    int x = 10, y = 20;
+    printf("Before: x=%d y=%d\n", x, y);
+    swap(&x, &y);
+    printf("After : x=%d y=%d\n", x, y);
+    return 0;
+}
+ 
+ 
+Q24. Write a program that copies a string from one character array to another using only pointer arithmetic (no strcpy(), no []).
+ 
+#include <stdio.h>
+void myCopy(char *dest, char *src) {
+    while (*src != '\0') {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = '\0';
+}
+int main() {
+    char src[] = "Hello";
+    char dest[20];
+    myCopy(dest, src);
+    printf("Copied: %s\n", dest);
+    return 0;
+}
+ 
+ 
+Q25. Write a program that counts the number of vowels in a string using only pointer traversal (no index, no []).
+ 
+#include <stdio.h>
+int countVowels(char *p) {
+    int count = 0;
+    while (*p != '\0') {
+        char c = *p;
+        if (c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||
+            c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
+            count++;
+        p++;
+    }
+    return count;
+}
+int main() {
+    char str[] = "Hello World";
+    printf("Vowels: %d\n", countVowels(str));
+    return 0;
+}
